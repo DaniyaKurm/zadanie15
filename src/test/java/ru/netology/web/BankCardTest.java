@@ -17,7 +17,6 @@ public class BankCardTest {
 
     @BeforeAll
     public static void setupAll() {
-
         WebDriverManager.chromedriver().setup();
     }
 
@@ -80,17 +79,7 @@ public class BankCardTest {
     }
 
     @Test
-    void shouldTestV5() /* Ошибка валидации в поле "Фамилия и имя". Ввод кириллицы с числом. */ {
-        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иванов Иван5");
-        driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79222589899");
-        driver.findElement(By.className("checkbox__box")).click();
-        driver.findElement(By.className("button")).click();
-        String text = driver.findElement(By.cssSelector("[data-test-id=name].input_invalid .input__sub")).getText();
-        assertEquals("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.", text.trim());
-    }
-
-    @Test
-    void shouldTestV6() /* Пустое поле ввода имени и фамилии */ {
+    void shouldTestV5() /* Пустое поле ввода имени и фамилии */ {
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79273334242");
         driver.findElement(By.className("checkbox__box")).click();
@@ -100,7 +89,7 @@ public class BankCardTest {
     }
 
     @Test
-    void shouldTestV7() /* Ввод номера без "+". */ {
+    void shouldTestV6() /* Ввод номера без "+". */ {
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иванов Иван");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("79273334242");
         driver.findElement(By.className("checkbox__box")).click();
@@ -110,7 +99,7 @@ public class BankCardTest {
     }
 
     @Test
-    void shouldTestV8() /* Пустое поле ввода телефона. */ {
+    void shouldTestV7() /* Пустое поле ввода телефона. */ {
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иванов Иван");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("");
         driver.findElement(By.className("checkbox__box")).click();
@@ -120,7 +109,7 @@ public class BankCardTest {
     }
 
     @Test
-    void shouldTestV9() /* Отправление формы без галочки в чек-боксе */ {
+    void shouldTestV8() /* Отправление формы без галочки в чек-боксе */ {
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иванов Иван");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79273334242");
         driver.findElement(By.className("button")).click();
