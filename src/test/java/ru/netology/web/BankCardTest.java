@@ -30,7 +30,6 @@ public class BankCardTest {
         driver.get("http://localhost:9999");
     }
 
-
     @AfterEach
     void tearDown() {
         driver.quit();
